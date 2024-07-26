@@ -1,8 +1,0 @@
-{
-    "database" : "institut_de_combat",
-    "username" : "yazid",
-    "password" : "Yazidinstitutdecombat59",
-    "host" : "localhost",
-    "port" : 3306,
-    "SECRET" : "maclesecrete"
-}
