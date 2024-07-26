@@ -37,8 +37,8 @@ seances.init ({
     }
 },{
     sequelize,
-        modelName: 'utilisateurs',
-        tableName: 'utilisateurs',
+        modelName: 'seances',
+        tableName: 'seances',
         timestamps: false,
         paranoid: true,        
         freezeTableName: true,

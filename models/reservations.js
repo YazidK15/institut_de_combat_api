@@ -35,8 +35,8 @@ reservations.init ({
     },
 },{
     sequelize,
-        modelName: 'utilisateurs',
-        tableName: 'utilisateurs',
+        modelName: 'reservations',
+        tableName: 'reservations',
         timestamps: false,
         paranoid: true,        
         freezeTableName: true,

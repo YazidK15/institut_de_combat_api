@@ -1,6 +1,7 @@
 const express = require('express');
 
 const utilisateursRoutes = require ('./routes/utilisateursRoutes');
+const seancesRoutes = require ('./routes/seancesRoutes');
 
 const cors = require('cors');
 const app = express();
@@ -10,6 +11,7 @@ app.use(express.json());
 
 
 app.use('/utilisateurs', utilisateursRoutes);
+app.use('/seances', seancesRoutes);
 
 
 

@@ -29,8 +29,8 @@ abonnements.init ({
     }
 },{
     sequelize,
-        modelName: 'utilisateurs',
-        tableName: 'utilisateurs',
+        modelName: 'abonnements',
+        tableName: 'abonnements',
         timestamps: false,
         paranoid: true,        
         freezeTableName: true,
