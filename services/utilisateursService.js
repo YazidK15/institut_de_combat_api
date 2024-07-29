@@ -7,7 +7,7 @@ class utilisateursService {
     }
 
     async getUtilisateursById(utilisateurID) {
-        return await utilisateurs.findByPk(utilisateurID);
+        return await utilisateurs.findByPk(utilisateurID, {include  : 'abonnement'});
     }
 
     async addUtilisateurs(utilisateur) {

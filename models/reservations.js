@@ -19,7 +19,7 @@ reservations.init ({
         type : DataTypes.STRING(50),
         allowNull : false
     },
-    id_utitilisateur : {
+    id_utilisateur : {
         type : DataTypes.INTEGER,
         references: {
             model: 'utilisateurs',
@@ -42,5 +42,7 @@ reservations.init ({
         freezeTableName: true,
         charset: 'utf8',
 })
+
+
 
 module.exports = reservations;

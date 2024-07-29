@@ -7,7 +7,7 @@ class abonnementsService {
     }
 
     async getAbonnementsByID (abonnementID){
-        return await abonnements.findByPk(abonnementID);
+        return await abonnements.findByPk(abonnementID, {include : 'utilisateurs'});
     }
 
     async addAbonnements (abonnement) {

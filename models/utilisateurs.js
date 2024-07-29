@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/Sequelize');
+const abonnements = require('./abonnements');
 
 class utilisateurs extends Model {
 
@@ -61,5 +62,10 @@ utilisateurs.init ({
         freezeTableName: true,
         charset: 'utf8',
 })
+
+// Permet d'aller chercher les utilisateurs dans abonnementsService
+abonnements.hasMany (utilisateurs, {as : 'utilisateurs', foreignKey: 'id_abonnement'});
+// Récuperer l'abonnement relié à l'utilisateur
+utilisateurs.belongsTo (abonnements, {as : 'abonnement', foreignKey: 'id_abonnement'});
 
 module.exports = utilisateurs;
