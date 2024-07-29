@@ -19,7 +19,15 @@ class utilisateursService {
     }
 
     async updateUtilisateurs(id, utilisateur) {
-        return await utilisateurs.update(utilisateur, { where: { id_utilisateur: id } });
+        return await utilisateurs.update(utilisateur, { where: { id_utilisateur: id }, individualHooks: true});
+    }
+
+    async login(email, mot_de_passe){
+        const utilisateur = await utilisateurs.findOne({ where: { email : email } });
+        if (!utilisateur || !await utilisateur.validatePassword(mot_de_passe)){
+            throw new Error('Email ou mot de passe inccorect');
+        }
+        return utilisateur;
     }
 }
 

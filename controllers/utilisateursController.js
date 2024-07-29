@@ -60,6 +60,21 @@ class utilisateursController {
             result.status(500).json({ error: 'Erreur lors de la mise à jour de l\'utilisateur' });
         }
     }
+
+    async login (request, result){
+        try {
+            const {email, mot_de_passe} = request.body;
+            console.log(email, mot_de_passe)
+            const utilisateur = await utilisateursService.login(email, mot_de_passe);
+            if (!utilisateur) {
+                return result.status(401).json({ error: 'Identifiants incorrects' });
+            }
+            result.status(200).json(utilisateur);
+        } catch (error) {
+            console.error(error);
+            result.status(500).json({ error: 'Erreur lors de la connexion' });
+        }
+    }
 }
 
 module.exports = new utilisateursController();

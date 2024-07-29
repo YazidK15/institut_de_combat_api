@@ -1,9 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/Sequelize');
 const abonnements = require('./abonnements');
+const bcrypt = require('bcrypt');
 
 class utilisateurs extends Model {
-
+    async validatePassword(mot_de_passe){
+        return await bcrypt.compare(mot_de_passe, this.mot_de_passe);
+    }
 }
 
 utilisateurs.init ({
@@ -31,7 +34,7 @@ utilisateurs.init ({
         unique : true
     },
     mot_de_passe : {
-        type : DataTypes.STRING(100),
+        type : DataTypes.TEXT,
         allowNull : false
     },
     role : {
@@ -61,6 +64,16 @@ utilisateurs.init ({
         paranoid: true,        
         freezeTableName: true,
         charset: 'utf8',
+        hooks :{
+            beforeCreate : async (utilisateurs) => {
+                utilisateurs.mot_de_passe = await bcrypt.hash(utilisateurs.mot_de_passe, 10)
+            },
+            beforeUpdate : async (utilisateurs) => {
+                if(utilisateurs.changed('mot_de_passe')){
+                    utilisateurs.mot_de_passe = await bcrypt.hash(utilisateurs.mot_de_passe, 10)
+                }
+            }
+        }
 })
 
 // Permet d'aller chercher les utilisateurs dans abonnementsService

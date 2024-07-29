@@ -8,6 +8,7 @@ router.get('/:id', (request, result) => {utilisateursController.getUtilisateursB
 router.post('/', (request, result) => {utilisateursController.addUtilisateurs(request, result)});
 router.delete('/:id', (request, result) => {utilisateursController.deleteUtilisateurs(request, result)});
 router.patch('/:id', (request, result) => {utilisateursController.updateUtilisateurs(request, result)});
+router.post('/login', (request, result) => {utilisateursController.login(request, result)});
 
 
 module.exports = router;
