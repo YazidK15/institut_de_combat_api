@@ -64,7 +64,6 @@ class utilisateursController {
     async login (request, result){
         try {
             const {email, mot_de_passe} = request.body;
-            console.log(email, mot_de_passe)
             const utilisateur = await utilisateursService.login(email, mot_de_passe);
             if (!utilisateur) {
                 return result.status(401).json({ error: 'Identifiants incorrects' });
